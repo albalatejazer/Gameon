@@ -7,6 +7,7 @@
 	
 	public class Main extends MovieClip {
 		
+		public var selectedMenuItem:int = 0;
 		
 		public function Main() {
 			// constructor code
