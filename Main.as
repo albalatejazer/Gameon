@@ -3,11 +3,12 @@
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.desktop.NativeApplication;
-	
-	
+	import BubblePop;
+		
 	public class Main extends MovieClip {
 		
 		public var selectedMenuItem:int = 0;
+		var BubblePopGame:BubblePop = new BubblePop();
 		
 		public function Main() {
 			// constructor code
@@ -26,5 +27,4 @@
 			NativeApplication.nativeApplication.exit(0);
 		}
 	}
-	
 }
