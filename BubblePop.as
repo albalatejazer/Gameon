@@ -12,16 +12,29 @@
 			//this.RegularBubble = this.getChildByName("RegularBubbleButton");
 		}
 	
+		private function ValidateBubble(bubble:String){
+			var bubble = bubble;
+			
+			if (bubble != this.FirstActiveBubble){
+				return bubble;
+			}
+			else {
+				return null;
+			}
+			
+		}
+	
 		public function ActivateBubble(e:MouseEvent) {
 			
 			if (this.FirstActiveBubble == null){
-				this.FirstActiveBubble = e.target.name;				
+				this.FirstActiveBubble = ValidateBubble(e.target.name);				
 			} else {
-				this.SecondActiveBubble = e.target.name;
+				this.SecondActiveBubble = ValidateBubble(e.target.name);
 			}
 		
 			//logic for bubble check
-		
+			//trace(MovieClip(root).getChildByName("RegularBubbleActive"));
+			
 			trace(this.FirstActiveBubble);
 			trace(this.SecondActiveBubble);
 		
