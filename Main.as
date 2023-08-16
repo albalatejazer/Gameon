@@ -23,6 +23,10 @@
 			gotoAndStop(this.currentFrame - 1, this.currentScene.name);
 		}
 	
+		public function GoForward(e:MouseEvent):void {
+			gotoAndStop(this.currentFrame + 1, this.currentScene.name);
+		}
+	
 		public function Quit(e:MouseEvent):void
 		{
 			NativeApplication.nativeApplication.exit(0);
