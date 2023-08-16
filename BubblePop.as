@@ -12,10 +12,9 @@
 		private var SecondActiveBubble;
 		private var Bubbles:Array = [];
 		private var Texts:Array = [];
-		private var Data:Array = [["MAS","TER", "BANA", "NA", "AP", "PLE", "BAN"]];
+		private var Data:Array = ["MAS","TER", "BANA", "NA", "AP", "PLE", "BAN"];
 
 		public function BubblePop() {
-			//this.RegularBubble = this.getChildByName("RegularBubbleButton");
 			
 		}
 	
@@ -32,19 +31,10 @@
 			var bubbleButton = inactiveBubble.getChildAt(0);
 			trace(bubbleButton.name);
 			
-			if (bubbleButton.name == "RegularBubbleButton"){
-				//var textField = bubbleButton.getChildAt(1);
-				trace(bubbleButton.name);
-				
-				//textField.text = "qwemn";
-			} else {
-				var textField = inactiveBubble.getChildAt(1);
-				textField.text = "qwemn";
-			}
-		
-			//activeBubble.visible = false;
-			//inactiveBubble.visible = false;
-            //trace(activeBubble.getChildByName("RegularBubbleButton2"));
+			var textField = inactiveBubble.getChildAt(1);
+			textField.text = this.Data.pop();
+			
+			
         }
 	
 		private function ValidateBubble(bubble:String){
@@ -66,17 +56,9 @@
 				this.SecondActiveBubble = ValidateBubble(e.target.name);
 			}
 		
-			//logic for bubble check
-			//for each (var bubble:MovieClip in this.Bubbles){
-				//trace(bubble.name, "!=", e.target.name);
-				//var currentBubble = bubble.name + "Button";
-				//if (currentBubble == this.FirstActiveBubble){
-				//	trace(e.target.name);
-				//}
-			//}
-		
-			//trace(this.FirstActiveBubble);
-			//trace(this.SecondActiveBubble);
+			//e.target.visible = false;
+			trace(e.target.parent.name);
+			e.target.parent.visible = false;
 		
 			// clears active bubbles
 			if (this.SecondActiveBubble != null){
