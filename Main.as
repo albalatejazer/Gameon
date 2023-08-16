@@ -9,9 +9,10 @@
 		
 		public var selectedMenuItem:int = 0;
 		var BubblePopGame:BubblePop = new BubblePop();
+		//var bubble = RegularBubbleActive;
 		
 		public function Main() {
-			// constructor code
+			
 		}
 	
 		public function Navigate(e: MouseEvent):void {
