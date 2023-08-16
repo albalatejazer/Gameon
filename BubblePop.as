@@ -4,6 +4,10 @@
 	import flash.events.MouseEvent;
 	import flash.utils.Dictionary;
 	import flash.text.TextField;
+	import flash.media.SoundChannel;
+	import flash.media.Sound;
+	import flash.net.URLRequest;
+	import flash.events.IOErrorEvent;
 	
 	
 	public class BubblePop extends MovieClip {
@@ -18,13 +22,17 @@
 			
 		}
 	
+		public function Populate() {
+			this.Data = ["MAS","TER", "BANA", "NA", "AP", "PLE", "BAN"];
+		}
+	
 		public function RegisterText(text:TextField){
 			this.Texts.push(text);
 			trace(text);
 		}
 	
 		public function RegisterBubble(bubble:MovieClip):void {
-            this.Bubbles.push(bubble);
+			this.Bubbles.push(bubble);
 			bubble.addEventListener(MouseEvent.CLICK, this.ActivateBubble);
 			
 			var inactiveBubble = bubble.getChildAt(0);
@@ -32,9 +40,7 @@
 			trace(bubbleButton.name);
 			
 			var textField = inactiveBubble.getChildAt(1);
-			textField.text = this.Data.pop();
-			
-			
+			textField.text = this.Data.pop();	
         }
 	
 		private function ValidateBubble(bubble:String){
@@ -56,10 +62,9 @@
 				this.SecondActiveBubble = ValidateBubble(e.target.name);
 			}
 		
-			//e.target.visible = false;
 			trace(e.target.parent.name);
 			e.target.parent.visible = false;
-		
+								
 			// clears active bubbles
 			if (this.SecondActiveBubble != null){
 				this.FirstActiveBubble = null;
