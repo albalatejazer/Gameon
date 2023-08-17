@@ -4,16 +4,18 @@
 	import flash.events.MouseEvent;
 	import flash.desktop.NativeApplication;
 	import BubblePop;
-		
+	import EasyPronunciation;
 	public class Main extends MovieClip {
 		
 		public var selectedMenuItem:int = 0;
 		var BubblePopGame:BubblePop = new BubblePop();
 		//var bubble = RegularBubbleActive;
-		
+		public var easyPronunciation:EasyPronunciation = new EasyPronunciation();
+
 		public function Main() {
-			
+			addChild(easyPronunciation);
 		}
+
 	
 		public function Navigate(e: MouseEvent):void {
 			gotoAndStop(1, "Scene Name");
