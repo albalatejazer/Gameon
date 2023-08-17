@@ -16,6 +16,7 @@
 		private var SecondActiveBubble;
 		private var Bubbles:Array = [];
 		private var CurrentData = 0;
+		private var CurrentAnswer;
 		private var Data:Array = [];
 		public var Instruction:TextField;
 
@@ -29,53 +30,47 @@
 							["Click the short 'I' sound", 
 								[["RAP",false], ["KID",true], ["CAT",false], ["DEEP",false], ["MEAN",false], ["POP",false], ["TIP",false]]	]
 						];
+			
+			for each(var bubble in this.Bubbles){
+				var bubbleAnimation = bubble.getChildAt(0);
+				var textField = bubbleAnimation.getChildAt(1);
+				var data = this.Data[this.CurrentData][1].pop();
+				if (data[1]){
+					this.CurrentAnswer = data[0];
+				}
+				textField.text = data[0];
+			}
+		
+			this.Instruction.text = this.Data[this.CurrentData][0];
+
 		}
 	
 		function RegisterInstruction(textField:TextField){
-			textField.text = this.Data[this.CurrentData][0];
+			this.Instruction = textField;
 		}
 	
 		public function RegisterBubble(bubble:MovieClip):void {
 			this.Bubbles.push(bubble);
 			bubble.addEventListener(MouseEvent.CLICK, this.ActivateBubble);
-			
-			var inactiveBubble = bubble.getChildAt(0);
-			var bubbleButton = inactiveBubble.getChildAt(0);
-			trace(bubbleButton.name);
-			
-			var textField = inactiveBubble.getChildAt(1);
-			var data = this.Data[this.CurrentData][1].pop();
-			textField.text = data[0];
         }
-	
-		private function ValidateBubble(bubble:String){
-			var bubble = bubble;
-			
-			if (bubble != this.FirstActiveBubble){
-				return bubble;
-			}
-			else {
-				return null;
-			}
-		}
 	
 		public function ActivateBubble(e:MouseEvent) {
 			
-			if (this.FirstActiveBubble == null){
-				this.FirstActiveBubble = ValidateBubble(e.target.name);				
+			var bubbleAnimation = e.target.parent;
+			var textField = bubbleAnimation.getChildAt(1);
+			
+			
+			
+			if (textField.text == this.CurrentAnswer){
+				textField.text = "WIN";
+				this.CurrentData++;
+				this.Populate();
 			} else {
-				this.SecondActiveBubble = ValidateBubble(e.target.name);
-			}
-		
-			trace(e.target.parent.name);
-			e.target.parent.visible = false;
-								
-			// clears active bubbles
-			if (this.SecondActiveBubble != null){
-				this.FirstActiveBubble = null;
-				this.SecondActiveBubble = null;
+				textField.text = "BAD";
 			}
 			
+			
+			//e.target.parent.visible = false;
 		}
 	
 	}

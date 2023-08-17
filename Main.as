@@ -11,7 +11,7 @@
 		var BubblePopGame:BubblePop = new BubblePop();
 		
 		function Main() {
-			this.BubblePopGame.Populate();
+			
 		}
 	
 		function GoBack(e:MouseEvent):void {
