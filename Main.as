@@ -7,27 +7,22 @@
 		
 	public class Main extends MovieClip {
 		
-		public var selectedMenuItem:int = 0;
+		var selectedMenuItem:int = 0;
 		var BubblePopGame:BubblePop = new BubblePop();
-		//var bubble = RegularBubbleActive;
 		
-		public function Main() {
-			
+		function Main() {
+			this.BubblePopGame.Populate();
 		}
 	
-		public function Navigate(e: MouseEvent):void {
-			gotoAndStop(1, "Scene Name");
-		}
-	
-		public function GoBack(e:MouseEvent):void {
+		function GoBack(e:MouseEvent):void {
 			gotoAndStop(this.currentFrame - 1, this.currentScene.name);
 		}
 	
-		public function GoForward(e:MouseEvent):void {
+		function GoForward(e:MouseEvent):void {
 			gotoAndStop(this.currentFrame + 1, this.currentScene.name);
 		}
 	
-		public function Quit(e:MouseEvent):void
+		function Quit(e:MouseEvent):void
 		{
 			NativeApplication.nativeApplication.exit(0);
 		}
