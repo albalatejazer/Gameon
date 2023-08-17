@@ -115,13 +115,14 @@
 
 		function CompleteNext(e: MouseEvent) {
 			var main = e.target.parent.parent;
+			new CoinsSound() .play();
 			main.gotoAndPlay(67);
 		}
 
 		public function RegisterComplete(button) {
 			button.addEventListener(MouseEvent.CLICK, this.CompleteNext);
 		}
-
+	
 		public function ActivateBubble(e: MouseEvent) {
 			var bubbleAnimation = e.target.parent;
 			var textField = bubbleAnimation.getChildAt(1);
@@ -136,7 +137,7 @@
 				}
 
 				this.Populate();
-
+				new CompleteSound() .play();
 				var main = this.Instruction.parent;
 				main.Stars += 10;
 				main.gotoAndPlay(60);
@@ -144,7 +145,8 @@
 			} else {
 				textField.text = "BAD";
 			}
-
+			
+			new PopSound() .play();
 			bubbleAnimation.visible = false;
 		}
 
