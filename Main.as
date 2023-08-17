@@ -9,6 +9,7 @@
 		
 		var selectedMenuItem:int = 0;
 		var BubblePopGame:BubblePop = new BubblePop();
+		public var Stars:int = 0;
 		
 		function Main() {
 			
