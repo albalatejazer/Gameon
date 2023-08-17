@@ -15,20 +15,24 @@
 		private var FirstActiveBubble;
 		private var SecondActiveBubble;
 		private var Bubbles:Array = [];
-		private var Texts:Array = [];
-		private var Data:Array = ["MAS","TER", "BANA", "NA", "AP", "PLE", "BAN"];
+		private var CurrentData = 0;
+		private var Data:Array = [];
+		public var Instruction:TextField;
 
 		public function BubblePop() {
 			
 		}
 	
 		public function Populate() {
-			this.Data = ["MAS","TER", "BANA", "NA", "AP", "PLE", "BAN"];
+			this.Data = [	["Click the short 'A' sound", 
+								[["BED",false], ["KID",false], ["CAT",true], ["DEEP",false], ["MEAN",false], ["POP",false], ["TIP",false]]	],
+							["Click the short 'I' sound", 
+								[["RAP",false], ["KID",true], ["CAT",false], ["DEEP",false], ["MEAN",false], ["POP",false], ["TIP",false]]	]
+						];
 		}
 	
-		public function RegisterText(text:TextField){
-			this.Texts.push(text);
-			trace(text);
+		function RegisterInstruction(textField:TextField){
+			textField.text = this.Data[this.CurrentData][0];
 		}
 	
 		public function RegisterBubble(bubble:MovieClip):void {
@@ -40,7 +44,8 @@
 			trace(bubbleButton.name);
 			
 			var textField = inactiveBubble.getChildAt(1);
-			textField.text = this.Data.pop();	
+			var data = this.Data[this.CurrentData][1].pop();
+			textField.text = data[0];
         }
 	
 		private function ValidateBubble(bubble:String){
