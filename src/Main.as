@@ -8,11 +8,13 @@
 	import flash.events.Event;
 	import BubblePop;
 	import EasyPronunciation;
+	import EasyReading;
 	
 	public class Main extends MovieClip {
 		
 		var selectedMenuItem:int = 0;
 		var BubblePopGame:BubblePop = new BubblePop();
+		var easyReading:EasyReading = new EasyReading();
 		public var Stars:int = 0;
 		public var easyPronunciation:EasyPronunciation = new EasyPronunciation();
 		public var click:ClickSound = new ClickSound();
